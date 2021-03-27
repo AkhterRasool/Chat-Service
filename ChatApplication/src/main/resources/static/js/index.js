@@ -6,10 +6,10 @@ const usernameField = document.getElementById("username");
 const submitButton = document.getElementById("submit");
 let currentUser = undefined;
 
-submitButton.addEventListener("click", function() {
+function submitUsernameForm() {
     localStorage.setItem(CURRENT_USER, usernameField.value);
     navigateToChatArea(usernameField.value);
-});
+}
 
 function navigateToChatArea(currentUser) {
     localStorage.setItem(CURRENT_USER, currentUser);
@@ -23,3 +23,11 @@ function navigateToChatArea(currentUser) {
 if (localStorage.getItem(CURRENT_USER)) {
     navigateToChatArea(localStorage.getItem(CURRENT_USER));
 }
+
+usernameField.addEventListener('keydown', event => {
+    if (event.key === 'Enter') {
+        submitUsernameForm();
+    }
+});
+
+submitButton.addEventListener("click", submitUsernameForm);

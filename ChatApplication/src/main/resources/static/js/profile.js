@@ -96,7 +96,7 @@ function loadConversation(otherUser, currentUser) {
     })
 }
 
-sendMessageButton.addEventListener('click', function() {
+function sendMessage() {
     promptToSelectConversation();
     const typedMessage = textArea.value;
     if (!typedMessage || typedMessage.length == 0) {
@@ -110,8 +110,8 @@ sendMessageButton.addEventListener('click', function() {
         textArea.value = '';
         textArea.focus();
         loadConversation(otherUser, currentUser);
-    })
-})
+    });
+}
 
 function addClickListenerToContacts() {
     setTimeout(() => {
@@ -157,4 +157,12 @@ window.onload = function() {
             loadConversation(otherUser, currentUser);
         }
     }, 1000);
+
+
+    sendMessageButton.addEventListener('click', sendMessage);
+    textArea.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    });
 }
