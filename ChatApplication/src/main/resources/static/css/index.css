@@ -1,0 +1,14 @@
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+#form {
+    padding: 40px;
+    text-align: center;
+}
+
+#form input {
+    width: 50%;
+    margin: 10px 25%;
+}
